@@ -1,2 +1,2 @@
-# Spring store micro-services 
+# Spring Web Store
 
