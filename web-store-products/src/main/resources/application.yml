@@ -1,0 +1,29 @@
+spring:
+  main:
+    log-startup-info: true
+  application:
+    name: web-store-products
+  mvc:
+    problemdetails:
+      enabled: true
+
+server:
+  address: localhost
+  port: 9010
+  servlet:
+    context-path: /web-store/products/v1/api
+    
+logging:
+  level:
+    mike.spring.webstore: DEBUG
+    web: INFO
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    display-request-duration: true
+    operationsSorter: alpha
+    tagsSorter: alpha
+    doc-expansion: list

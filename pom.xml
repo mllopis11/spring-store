@@ -27,7 +27,21 @@
         
         <project.scm.url>git@github.com:mllopis11/spring-web-store</project.scm.url>
 
-        <!-- Versions -->
+        <!-- Application properties -->
+        <app.name>Web-Store</app.name>
+        <app.module>web-store-services</app.module>
+        <app.contact.email>john.doe@foo.com</app.contact.email>
+
+        <!-- Maven versions -->
+        <maven.plugin.resources.version>3.3.1</maven.plugin.resources.version>
+        <maven.plugin.source.version>3.3.1</maven.plugin.source.version>
+        <maven.plugin.javadoc.version>3.11.2</maven.plugin.javadoc.version>
+        <maven.plugin.surefire.version>3.5.3</maven.plugin.surefire.version>
+        <maven.plugin.failsafe.version>3.5.3</maven.plugin.failsafe.version>
+
+        <!-- Dependencies versions -->
+        <springdoc.openapi.starter.version>2.8.6</springdoc.openapi.starter.version>
+
         <junit-jupiter.version>5.12.2</junit-jupiter.version>
         <assertj.version>3.27.3</assertj.version>
     </properties>
@@ -36,14 +50,22 @@
         <url>${project.scm.url}</url>
         <connection>scm:git:${project.scm.url}.git</connection>
         <developerConnection>scm:git:${project.scm.url}.git</developerConnection>
-        <tag>HEAD<tag>
+        <tag>HEAD</tag>
     </scm>
 
     <modules>
+        <module>web-store-products</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.openapi.starter.version}</version>
+            </dependency>
+
             <!-- Tests -->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
@@ -87,6 +109,14 @@
                         <goals>
                             <goal>build-info</goal>
                         </goals>
+                        <configuration>
+                            <additionalProperties>
+                                <app.organization>${project.organization.name}</app.organization>
+                                <app.name>${app.name}</app.name>
+                                <app.module>${app.module}</app.module>
+                                <app.contact.email>${app.contact.email}</app.contact.email>
+                            </additionalProperties>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -105,6 +135,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.plugin.resources.version}</version>
                 <configuration>
                     <escapeString>\</escapeString>
                     <encoding>UTF-8</encoding>
@@ -114,6 +145,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.plugin.source.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -129,11 +161,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.plugin.surefire.version}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.plugin.failsafe.version}</version>
             </plugin>
         </plugins>
     </build>
