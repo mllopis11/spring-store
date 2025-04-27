@@ -3,30 +3,34 @@ package mike.spring.webstore.web.rest;
 import java.util.Collection;
 
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotNull;
 import mike.spring.webstore.domain.Product;
+import mike.spring.webstore.domain.ProductName;
 import mike.spring.webstore.exception.ProductNotFoundException;
 import mike.spring.webstore.service.ProductService;
 import mike.spring.webstore.web.model.ProductForm;
 
 @RestController
-@RequestMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name = "Products", description = "Product operations")
+@Validated
 public class ProductResources {
 
     private final ProductService productService;
@@ -58,10 +62,9 @@ public class ProductResources {
             description = "Product",
             content = @Content(schema = @Schema(implementation = Product.class)))
     @GetMapping(value = "/{name}")
-    public Product findByName(@PathVariable("name") 
-            @NotBlank 
-            @Pattern(regexp = "^\\w{5,30}", message = "must only contains characters")
-            String name) {
+    public Product findByName(
+            @Parameter(required = true, description = "Product name")
+            @PathVariable("name") @ProductName String name) {
         
         return this.productService.findByName(name).orElseThrow(() -> new ProductNotFoundException(name));
     }
@@ -75,7 +78,7 @@ public class ProductResources {
         description = "Product",
         content = @Content(schema = @Schema(implementation = Product.class)))
     @PutMapping(value = "/create")
-    public Product create(@Valid @RequestBody ProductForm form) {
+    public Product create(@NotNull @RequestBody @Valid ProductForm form) {
         return this.productService.create(form);
     }
 }

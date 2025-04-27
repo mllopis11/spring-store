@@ -15,8 +15,9 @@ server:
     
 logging:
   level:
+    root: INFO
     mike.spring.webstore: DEBUG
-    web: INFO
+    org.springframework: INFO
 
 springdoc:
   api-docs:

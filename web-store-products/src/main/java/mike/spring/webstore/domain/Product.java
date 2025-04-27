@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 @Schema
 public record Product(
     @Min(1) @Max(999999) int id,
-    @NotBlank 
+    @NotBlank
     String name,
     @Min(1) double price,
     @Schema(example = "100")
