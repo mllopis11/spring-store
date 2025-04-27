@@ -1,4 +1,4 @@
-package mike.spring.webstore.configuration;
+package mike.spring.webstore.bootstrap.web;
 
 import java.util.Optional;
 
@@ -11,10 +11,11 @@ import io.swagger.v3.oas.models.info.Contact;
 import jakarta.validation.constraints.NotNull;
 
 @Configuration
-class OpenApiAutoConfiguration {
+public class OpenApiAutoConfiguration {
 
     @Bean
     public OpenApiCustomizer openApiCustomizer(@NotNull BuildProperties buildProperties) {
+
         return openapi -> {
             
             openapi.getInfo().version(buildProperties.getVersion());

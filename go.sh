@@ -3,11 +3,11 @@
 function die { echo "[ERROR] $*"; exits 1; }
 
 case $1 in
-products) ;;
+product) ;;
 *) die "unkown project: $1"
 esac
 
-_service="web-store-${1}"
+_service="${1}-service"
 
 cd ${_service} || die "service folder not found: ${_service}"
 

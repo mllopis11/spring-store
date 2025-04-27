@@ -1,4 +1,4 @@
-package mike.spring.webstore.domain;
+package mike.spring.webstore.product.domain.model;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

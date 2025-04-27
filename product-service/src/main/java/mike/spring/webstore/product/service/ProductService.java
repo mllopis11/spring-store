@@ -1,4 +1,4 @@
-package mike.spring.webstore.service;
+package mike.spring.webstore.product.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -8,20 +8,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import mike.spring.webstore.domain.Product;
-import mike.spring.webstore.web.model.ProductForm;
+import mike.spring.webstore.product.domain.model.Product;
+import mike.spring.webstore.product.domain.model.ProductForm;
 
 @Service
 public class ProductService {
 
-    private static final Logger log = LoggerFactory.getLogger(ProductService.class); 
+    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 
     public Collection<Product> findAll() {
         return List.of();
     }
 
-    public Optional<Product> findByName(String name) {
-        log.debug("Product::findByName: name={}", name);
+    public Optional<Product> findById(int id) {
+        log.debug("Product::findById: id={}", id);
         return Optional.empty();
     }
 

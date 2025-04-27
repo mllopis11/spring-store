@@ -1,4 +1,4 @@
-package mike.spring.webstore.exception;
+package mike.spring.webstore.bootstrap.web;
 
 import java.util.List;
 import java.util.Optional;
@@ -59,7 +59,7 @@ public class WebRestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler
-    protected ProblemDetail handleInternalServerError(Throwable ex, WebRequest request) {
+    protected ProblemDetail handleGenericError(Throwable ex, WebRequest request) {
 
         var problem = ProblemDetailBuilder.serverError().build();
 

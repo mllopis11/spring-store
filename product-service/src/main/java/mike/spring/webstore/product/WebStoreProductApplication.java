@@ -1,12 +1,14 @@
-package mike.spring.webstore;
+package mike.spring.webstore.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 
 @SpringBootApplication
+@ComponentScan({"java.mike.spring.webstore"})
 @OpenAPIDefinition(
         info = @Info(
                 title = "Web-Store Products API",

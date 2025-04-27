@@ -1,9 +1,8 @@
-package mike.spring.webstore.web.model;
+package mike.spring.webstore.product.domain.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import mike.spring.webstore.domain.ProductName;
 
 @Schema
 public record ProductForm(

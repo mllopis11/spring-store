@@ -1,11 +1,10 @@
-package mike.spring.webstore.domain;
+package mike.spring.webstore.product.domain.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
-@Schema
 public record Product(
     @Min(1) @Max(999999) int id,
     @NotBlank

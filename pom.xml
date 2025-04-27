@@ -54,18 +54,32 @@
     </scm>
 
     <modules>
-        <module>web-store-products</module>
+        <module>bootstrap-api</module>
+        <module>product-service</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            
+            <dependency>
+                <groupId>mike.spring.webstore</groupId>
+                <artifactId>bootstrap-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
             <!-- Spring -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+                <version>${springdoc.openapi.starter.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc.openapi.starter.version}</version>
             </dependency>
-
+        
             <!-- Tests -->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>

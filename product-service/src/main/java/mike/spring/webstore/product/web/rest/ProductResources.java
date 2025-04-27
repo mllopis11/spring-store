@@ -1,4 +1,4 @@
-package mike.spring.webstore.web.rest;
+package mike.spring.webstore.product.web.rest;
 
 import java.util.Collection;
 
@@ -19,12 +19,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import mike.spring.webstore.domain.Product;
-import mike.spring.webstore.domain.ProductName;
-import mike.spring.webstore.exception.ProductNotFoundException;
-import mike.spring.webstore.service.ProductService;
-import mike.spring.webstore.web.model.ProductForm;
+import mike.spring.webstore.bootstrap.web.EntityNotFoundException;
+import mike.spring.webstore.product.domain.model.Product;
+import mike.spring.webstore.product.domain.model.ProductForm;
+import mike.spring.webstore.product.service.ProductService;
 
 @RestController
 @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -54,18 +55,18 @@ public class ProductResources {
 
     @Operation(
             method = "GET",
-            summary = "Retrieve company by its name",
-            description = "Returns the company if exists otherwise raise a 404 (NOT_FOUND) error.")
+            summary = "Retrieve product by its code",
+            description = "Returns the product if exists otherwise raise a 404 (NOT_FOUND) error.")
     @ApiResponse(
             responseCode = "200",
             description = "Product",
             content = @Content(schema = @Schema(implementation = Product.class)))
-    @GetMapping(value = "/{name}")
+    @GetMapping(value = "/{id}")
     public Product findByName(
-            @Parameter(required = true, description = "Product name")
-            @PathVariable("name") @ProductName String name) {
+            @Parameter(required = true, description = "Product id.")
+            @PathVariable("id") @Min(1) @Max(999999) int id) {
         
-        return this.productService.findByName(name).orElseThrow(() -> new ProductNotFoundException(name));
+        return this.productService.findById(id).orElseThrow(() -> new EntityNotFoundException(Product.class, id));
     }
 
     @Operation(
