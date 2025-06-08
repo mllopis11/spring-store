@@ -13,7 +13,7 @@ import jakarta.validation.constraints.Pattern;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Constraint(validatedBy = {})
 @Retention(RetentionPolicy.RUNTIME)
-@Pattern(regexp = "^\\w{5,30}")
+@Pattern(regexp = "[^\\<\\>\\{\\}]{5,50}")
 @ReportAsSingleViolation
 public @interface ProductName {
 

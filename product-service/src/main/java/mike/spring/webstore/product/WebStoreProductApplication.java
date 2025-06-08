@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 
 @SpringBootApplication
-@ComponentScan({"java.mike.spring.webstore"})
+@ComponentScan(basePackages = {"mike.spring.webstore"})
 @OpenAPIDefinition(
         info = @Info(
                 title = "Web-Store Products API",

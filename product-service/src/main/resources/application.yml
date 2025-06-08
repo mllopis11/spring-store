@@ -7,6 +7,20 @@ spring:
     problemdetails:
       enabled: true
 
+spring.datasource:
+  url: jdbc:h2:mem:products;DB_CLOSE_DELAY=-1;
+  username: sa
+  password:
+
+spring.jdbc:
+  template:
+    batch-size: 1000
+    fetch-size: 1000
+
+spring.sql:
+  init:
+    schema-locations: classpath:h2/schema.sql
+
 server:
   address: localhost
   port: 9010
