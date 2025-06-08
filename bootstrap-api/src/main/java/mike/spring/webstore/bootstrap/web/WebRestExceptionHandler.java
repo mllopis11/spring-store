@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import mike.spring.webstore.bootstrap.web.problem.ProblemDetailBuilder;
 
 @RestControllerAdvice
 public class WebRestExceptionHandler extends ResponseEntityExceptionHandler {
