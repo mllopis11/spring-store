@@ -1,4 +1,4 @@
-package mike.spring.webstore.bootstrap.web;
+package mike.spring.webstore.bootstrap.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.ErrorResponseException;
 
-import mike.spring.webstore.bootstrap.web.problem.ProblemDetailBuilder;
+import mike.spring.webstore.bootstrap.api.problem.ProblemDetailBuilder;
 
 public class EntityNotFoundException extends ErrorResponseException {
 

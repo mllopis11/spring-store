@@ -1,4 +1,4 @@
-package mike.spring.webstore.bootstrap.web;
+package mike.spring.webstore.bootstrap.api;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,12 +19,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
-import mike.spring.webstore.bootstrap.web.problem.ProblemDetailBuilder;
+import mike.spring.webstore.bootstrap.api.problem.ProblemDetailBuilder;
 
 @RestControllerAdvice
-public class WebRestExceptionHandler extends ResponseEntityExceptionHandler {
+public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(WebRestExceptionHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(RestExceptionHandler.class);
 
     @ExceptionHandler
     protected ProblemDetail handleConstraintViolation(ConstraintViolationException ex, WebRequest request) {

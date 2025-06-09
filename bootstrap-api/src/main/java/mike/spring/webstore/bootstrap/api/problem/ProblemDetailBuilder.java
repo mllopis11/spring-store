@@ -1,4 +1,4 @@
-package mike.spring.webstore.bootstrap.web.problem;
+package mike.spring.webstore.bootstrap.api.problem;
 
 import java.net.URI;
 import java.time.Instant;

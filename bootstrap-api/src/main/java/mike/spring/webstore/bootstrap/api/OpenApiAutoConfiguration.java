@@ -1,4 +1,4 @@
-package mike.spring.webstore.bootstrap.web;
+package mike.spring.webstore.bootstrap.api;
 
 import java.util.Optional;
 
